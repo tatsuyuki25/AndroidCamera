@@ -10,8 +10,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.List;
-
-import test.test.R;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,7 +29,6 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -105,12 +103,12 @@ public class TestCameraActivity extends Activity implements
 		surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 	}
 
+	@SuppressLint("HandlerLeak")
 	Handler handler = new Handler()
 	{
 		@Override
 		public void handleMessage(Message msg)
 		{
-			String TAG = "gg";
 			ImageView iv = (ImageView) findViewById(R.id.iv);
 			Bitmap resize = Bitmap.createScaledBitmap(b,320,240,true);
 			Matrix m = new Matrix();
